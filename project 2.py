@@ -1,35 +1,35 @@
 import PySimpleGUI as sg
 import pyttsx3
 
-ENGINE_VARIABLE_SO_REPLACE = pyttsx3.init()
-VOICE_VARIABLE_SO_REPLACE =ENGINE_VARIABLE_SO_REPLACE.getProperty("voices")
+Source_Engine = pyttsx3.init()
+Speech_Source_Engine =Source_Engine.getProperty("voices")
 
 
-layout =[[sg.Text("select the type of voice:",text_color="blue", background_color="green" ,),sg.Radio("male","RADIO1",default="true",key="male",
-background_color="red",) ,sg.Radio("female","RADIO1",key='female',background_color="red")],
+layout =[[sg.Text("Choose preferred voice type:",text_color="white", background_color="blue" ,),sg.Radio("Male","RADIO1",default="true",key="Masculine",
+background_color="white",) ,sg.Radio("Female","RADIO1",key='Feminine',background_color="white")],
  
  
  
- [sg.Text("enter text to speak:",text_color="white",background_color="purple",)],
- [sg.InputText(key="input"),sg.Button("speak",button_color="orange")],
+ [sg.Text("Input a text to Speak:",text_color="blue",background_color="white",)],
+ [sg.InputText(key="input text"),sg.Button("speak",button_color="black")],
 
       ]
                                      
 
-Window =sg.Window("CHOOSE YOUR APPLICATION NAME",layout,background_color="purple")
+Window =sg.Window("CHOOSE YOUR APPLICATION NAME",layout,background_color="white")
 while True :
     event, values=Window.read()
     if event ==sg.WINDOW_CLOSED:
       break
     elif event =="speak":
       text=values["input"]
-if values ["male"]:
-          ENGINE_VARIABLE_SO_REPLACE.setProperty("voice",VOICE_VARIABLE_SO_REPLACE[0].id)
-elif   values ["female"]:
-  ENGINE_VARIABLE_SO_REPLACE.setProperty("voice",VOICE_VARIABLE_SO_REPLACE[1].id)
+if values ["MAsculine"]:
+          Source_Engine.setProperty("voice",Speech_Source_Engine[0].id)
+elif   values ["Feminine"]:
+  Source_Engine.setProperty("voice",Speech_Source_Engine[1].id)
 
-  ENGINE_VARIABLE_SO_REPLACE.say(text)
-  ENGINE_VARIABLE_SO_REPLACE.runAndWait()
+  Source_Engine.say(text)
+  Source_Engine.runAndWait()
 
   Window.close()
 
